@@ -1,0 +1,6 @@
+{
+  "username": "",
+  "password": "",
+  "mqtt_broker_ip": "192.168.1.137",
+  "mqtt_topic": "rssi/distance/measure"
+}
