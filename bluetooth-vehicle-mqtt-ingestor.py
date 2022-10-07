@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 import datetime
 import csv
 
-column_names = ['rssi', 'datetime']
+column_names = ['message', 'datetime']
 
 # Open configuration json file
 with open('config.json', 'r') as configfile:
@@ -21,10 +21,10 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
     rssi_distance_data = {}
-    rssi_distance_data['rssi'] = msg.payload
+    rssi_distance_data['message'] = msg.payload
     rssi_distance_data['datetime'] = datetime.datetime.now()
 
-    with open('rssi_distance_data.csv', 'a') as csv_file:
+    with open('bluetooth_vehicle_debug.csv', 'a') as csv_file:
         dict_object = csv.DictWriter(csv_file, fieldnames=column_names)
         dict_object.writerow(rssi_distance_data)
 
